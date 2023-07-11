@@ -3,9 +3,6 @@ package com.example.textdemo
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
 import java.util.Date
 
 class TextViewModel : ViewModel() {
@@ -25,13 +22,7 @@ class TextViewModel : ViewModel() {
         return inputText
     }
 
-    fun addTextToList(str: String) {
-        inputText.add(str)
-        liveText.value = inputText
-    }
-
     override fun onCleared() {
         super.onCleared()
-        // Dispose All your Subscriptions to avoid memory leaks
     }
 }
