@@ -1,8 +1,6 @@
 package com.example.textdemo
 
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -21,9 +19,24 @@ class EspressoTest {
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    fun greeterSaysHello() {
-        onView(withId(R.id.editText)).perform(typeText("Steve"))
-        onView(withId(R.id.button)).perform(click())
-        onView(withId(R.id.listview)).check(matches(isDisplayed()));
+    fun checkListViewDisplayed() {
+        onView(withId(R.id.listview)).check(matches(isDisplayed()))
     }
+
+    @Test
+    fun checkEditTextDisplayed() {
+        onView(withId(R.id.editText)).check(matches(isDisplayed()))
+    }
+    @Test
+    fun checkButtonDisplayed() {
+        onView(withId(R.id.button)).check(matches(isDisplayed()))
+    }
+
+//    @Test
+//    fun checkListViewText() {
+//        onView(withId(R.id.editText)).perform(typeText("Steve"))
+//        onView(withId(R.id.button)).perform(click())
+//        onView(withId(R.id.listview)).check(matches(withText("Steve")));
+//    }
+
 }

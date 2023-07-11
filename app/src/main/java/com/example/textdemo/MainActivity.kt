@@ -1,13 +1,19 @@
 package com.example.textdemo
 
+import android.app.Activity
 import android.os.Bundle
+import android.os.Environment
+import android.util.Log
+import android.view.inputmethod.InputMethodManager
+import android.widget.AbsListView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.textdemo.databinding.ActivityMainBinding
-import kotlin.math.log
+import java.io.File
+import java.io.OutputStreamWriter
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,8 +29,27 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
         binding.button.setOnClickListener {
-            viewModel.addInputText(binding.editText.text.toString())
+            val text = binding.editText.text.toString()
+            viewModel.addInputText(text)
             itemsAdapter.notifyDataSetChanged()
+            writeFile(text)
+        }
+
+    }
+
+
+
+    private fun writeFile(text : String) {
+        try {
+            val path = Environment.getExternalStorageDirectory().toString()
+            val root = File(path)
+            val textFile = File(root, "entries.txt")
+            val writer = OutputStreamWriter(openFileOutput(textFile.name, MODE_APPEND))
+            writer.append(text)
+            writer.flush()
+            writer.close()
+        } catch (e : Exception) {
+            Log.e("MainActivity",e.message.toString())
         }
     }
 
