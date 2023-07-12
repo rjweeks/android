@@ -23,12 +23,11 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, com.example.textdemo.R.layout.activity_main)
         val viewModel : TextViewModel =
             ViewModelProvider(this).get(TextViewModel::class.java)
-        val recyclerView: RecyclerView = findViewById<View>(com.example.textdemo.R.id.recyclerView) as RecyclerView
         textAdapter = TextAdapter(viewModel.getInputText())
-        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+        ViewCompat.setNestedScrollingEnabled(binding.recyclerView, false);
         val layoutManager = LinearLayoutManager(applicationContext)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = textAdapter
+        binding.recyclerView.layoutManager = layoutManager
+        binding.recyclerView.adapter = textAdapter
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
         binding.button.setOnClickListener {
