@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.textdemo.databinding.ActivityMainBinding
@@ -26,12 +24,9 @@ class MainActivity : AppCompatActivity() {
         val viewModel : TextViewModel =
             ViewModelProvider(this).get(TextViewModel::class.java)
         val recyclerView: RecyclerView = findViewById<View>(com.example.textdemo.R.id.recyclerView) as RecyclerView
-//        val itemsAdapter: ArrayAdapter<String> =
-//            ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, viewModel.getInputText())
         textAdapter = TextAdapter(viewModel.getInputText())
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
         val layoutManager = LinearLayoutManager(applicationContext)
-//        binding.recyclerView.adapter = itemsAdapter
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = textAdapter
         binding.lifecycleOwner = this
@@ -43,8 +38,6 @@ class MainActivity : AppCompatActivity() {
             writeFile(text)
         }
     }
-
-
 
     private fun writeFile(text : String) {
         try {
