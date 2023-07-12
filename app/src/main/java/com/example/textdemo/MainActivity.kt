@@ -3,13 +3,11 @@ package com.example.textdemo
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.textdemo.databinding.ActivityMainBinding
 import java.io.File
 import java.io.OutputStreamWriter
