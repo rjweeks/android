@@ -13,14 +13,14 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class EspressoTest {
+class UITest {
 
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
     fun checkListViewDisplayed() {
-        onView(withId(R.id.listview)).check(matches(isDisplayed()))
+        onView(withId(R.id.recyclerView)).check(matches(isDisplayed()))
     }
 
     @Test

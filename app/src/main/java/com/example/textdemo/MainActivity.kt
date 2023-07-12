@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             val text = binding.editText.text.toString()
             viewModel.addInputText(text)
             textAdapter.notifyDataSetChanged()
-            //writeFile(text)
+            writeFile(text)
         }
     }
 
