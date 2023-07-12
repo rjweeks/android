@@ -45,7 +45,7 @@
             android:layout_height="529dp"
             android:layout_marginTop="43dp"
             android:scrollbars="vertical"
-            android:scrollbarStyle="outsideOverlay"
+            android:scrollbarStyle="insideOverlay"
             android:scrollbarThumbVertical="@android:color/darker_gray"
             android:scrollbarSize="5dp"
             app:layoutManager="LinearLayoutManager"
